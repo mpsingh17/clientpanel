@@ -20,6 +20,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
+// Services
+import { ClientService } from './services/client.service';
+
 // create routes.
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
@@ -50,7 +53,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     AngularFireDatabase,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ClientService
   ],
   bootstrap: [AppComponent]
 })
