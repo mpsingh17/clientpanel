@@ -18,8 +18,6 @@
         <input type="text"
                class="form-control"
                [ngClass]="{'is-invalid': clientFirstName.touched && clientFirstName.errors?.required || clientFirstName.errors?.minlength}"
-
-
                [(ngModel)]="client.firstName" 
                name="firstName" 
                #clientFirstName="ngModel"
@@ -53,18 +51,56 @@
       </div>
 
       <div class="form-group">
-        <label for="lastName">Email</label>
-        <input type="email" class="form-control" [ngClass]="{'is-invalid': clientLastName.touched && clientLastName.errors?.required || clientLastName.errors?.minlength}"
-          [(ngModel)]="client.lastName" name="lastName" #clientLastName="ngModel" minlength="2" required>
-        <div *ngIf="clientLastName.errors?.required && clientLastName.touched" class="invalid-feedback">
-          Last name is required.
+        <label for="email">Email</label>
+        <input type="email" 
+          class="form-control" 
+          [ngClass]="{'is-invalid': clientEmail.touched && clientEmail.errors?.required || clientEmail.errors?.pattern}"
+          [(ngModel)]="client.email" 
+          name="email" 
+          #clientEmail="ngModel"
+          required
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        >
+        <div *ngIf="clientEmail.errors?.required && clientEmail.touched" class="invalid-feedback">
+          Email is required.
         </div>
-        <div *ngIf="clientLastName.errors?.minlength && clientLastName.touched" class="invalid-feedback">
-          Must be atleast 2 characters.
+        <div *ngIf="clientEmail.errors?.pattern && clientEmail.touched" class="invalid-feedback">
+          Client email must be a valid email.
         </div>
       </div>
 
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [ngClass]="{'is-invalid': clientPhone.touched && clientPhone.errors?.required || clientPhone.errors?.minlength}"
+          [(ngModel)]="client.phone" 
+          name="phone" 
+          #clientPhone="ngModel" 
+          minlength="10" 
+          required
+        >
+        <div *ngIf="clientPhone.errors?.required && clientPhone.touched" class="invalid-feedback">
+          Phone number is required
+        </div>
+        <div *ngIf="clientPhone.errors?.minlength && clientPhone.touched" class="invalid-feedback">
+          Enter a valid phone number
+        </div>
+      </div>
 
+      <div class="form-group">
+        <label for="balance">Balance</label>
+        <input 
+          type="text" 
+          class="form-control"
+          [(ngModel)]="client.balance" 
+          name="balance" 
+          #clientPhone="ngModel"
+          [disabled] = "disableBalanceOnAdd"
+        >
+      </div>
+      <input type="submit" value="Submit" class="btn btn-primary btn-block">
     </form>
   </div>
 </div>
