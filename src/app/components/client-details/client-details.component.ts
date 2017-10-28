@@ -10,7 +10,7 @@ import { Client } from '../../models/Client';
   styleUrls: ['./client-details.component.css']
 })
 export class ClientDetailsComponent implements OnInit {
-  Id: string;
+  id: string;
   client: Client;
   hasBalance = false;
   showBalanceUpdateInput = false;
@@ -24,10 +24,10 @@ export class ClientDetailsComponent implements OnInit {
 
   ngOnInit() {
     // Get id from URL.
-    this.Id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params['id'];
 
     // Get client from service.
-    this.clientService.getClient(this.Id).subscribe(client => {
+    this.clientService.getClient(this.id).subscribe(client => {
       if (client.balance > 0 ) {
         this.hasBalance = true;
       }
@@ -36,4 +36,10 @@ export class ClientDetailsComponent implements OnInit {
     });
   }
 
+  // Update balance.
+  updateBalance(id: string) {
+    this.clientService.updateClient(this.id, this.client);
+    this.flashMessagesService.show('Client updated', { cssClass: 'alert-success', timeout: 5000 });
+    this.router.navigateByUrl('/client/' + this.id);
+  }
 }

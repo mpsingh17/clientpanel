@@ -31,4 +31,9 @@ export class ClientService {
     this.client = this.db.object(`/clients/${id}`).valueChanges();
     return this.client;
   }
+
+  // update client.
+  updateClient(id: string, client: Client) {
+    return this.clientsRef.update(id, client);
+  }
 }
