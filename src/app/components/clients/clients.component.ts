@@ -21,6 +21,7 @@ export class ClientsComponent implements OnInit {
     });
   }
 
+  // Calculate total owed money.
   getTotalOwed() {
     let total = 0;
     for (const client of this.clients) {
