@@ -42,4 +42,13 @@ export class ClientDetailsComponent implements OnInit {
     this.flashMessagesService.show('Client updated', { cssClass: 'alert-success', timeout: 5000 });
     this.router.navigateByUrl('/client/' + this.id);
   }
+
+  // Delete Client.
+  onDeleteClick() {
+    if (confirm('Are you sure ?')) {
+      this.clientService.deleteClient(this.id);
+      this.flashMessagesService.show('Client Deleted', { cssClass: 'alert-success', timeout: 5000 });
+      this.router.navigateByUrl('/');
+    }
+  }
 }
