@@ -45,6 +45,5 @@ export class AddClientComponent implements OnInit {
       this.flashMessagesService.show('Please fill in all fields', { cssClass: 'alert-danger', timeout: 5000 });
       this.router.navigateByUrl('/add-client');
     }
-
   }
 }

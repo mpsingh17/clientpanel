@@ -32,7 +32,7 @@ export class ClientDetailsComponent implements OnInit {
         this.hasBalance = true;
       }
       this.client = client;
-      console.log(this.client);
+      // console.log(this.client);
     });
   }
 
@@ -40,6 +40,7 @@ export class ClientDetailsComponent implements OnInit {
   updateBalance(id: string) {
     this.clientService.updateClient(this.id, this.client);
     this.flashMessagesService.show('Client updated', { cssClass: 'alert-success', timeout: 5000 });
+    this.showBalanceUpdateInput = false;
     this.router.navigateByUrl('/client/' + this.id);
   }
 
