@@ -18,7 +18,6 @@ export class AddClientComponent implements OnInit {
     phone: '',
     balance: 0
   };
-
   disableBalanceOnAdd = true;
 
   constructor(
