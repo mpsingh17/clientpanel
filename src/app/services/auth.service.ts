@@ -15,4 +15,9 @@ export class AuthService {
           .then(userData => resolve(userData), err => reject(err));
     });
   }
+
+  // Check if user is logged in or not.
+  getAuth() {
+    return this.afAuth.authState.map(auth => auth);
+  }
 }
