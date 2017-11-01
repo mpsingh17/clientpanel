@@ -39,6 +39,7 @@ const appRoutes: Routes = [
   { path: 'client/:id', component: ClientDetailsComponent, canActivate: [AuthGuard] },
   { path: 'edit-client/:id', component: EditClientComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
